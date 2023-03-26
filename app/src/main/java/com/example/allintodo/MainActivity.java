@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private String m_Text;
-    EditText nameText;
+    EditText emailText;
     EditText pass;
     Button addButton;
     Button registerButton;
@@ -34,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         names = new String [10];
-        nameText = (EditText) findViewById(R.id.name);
-        pass = (EditText) findViewById(R.id.password);
-        registerButton = (Button) findViewById(R.id.register);
+        emailText = (EditText) findViewById(R.id.Email);
+        pass = (EditText) findViewById(R.id.Password);
+        registerButton = (Button) findViewById(R.id.Signup);
         //Connect to db
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
 
     }
 
     public void loginClick(View v){
-        final String userEmail = nameText.getText().toString(); //add from view element
+        final String userEmail = emailText.getText().toString(); //add from view element
         final String passwordText = pass.getText().toString(); //add from view element
 
         if(userEmail.isEmpty() || passwordText.isEmpty()){
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUp(View v){
-        final String userEmail = nameText.getText().toString(); //add from view element
+        final String userEmail = emailText.getText().toString(); //add from view element
         final String passwordText = pass.getText().toString(); //add from view element
 
         if(userEmail.isEmpty() || passwordText.isEmpty()){
@@ -110,18 +110,6 @@ public class MainActivity extends AppCompatActivity {
             });
             tr.start();
         }
-    }
-    public void onClick(View v){
-        String name = nameText.toString();
-        names[0] = name;
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
-        mainList.setAdapter(adapter);
-
-
-    }
-
-    public void room (){
-
     }
 
 }
