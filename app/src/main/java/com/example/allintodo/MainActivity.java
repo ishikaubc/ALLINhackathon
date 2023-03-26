@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             //Perform Query to DB
             final UserDao userDao = db.userDao();
-            new Thread(new Runnable(){
+            Thread tr = new Thread(new Runnable(){
                 @Override
                 public void run(){
                     User user = userDao.login(userEmail);
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+            tr.start();
         }
     }
 
@@ -81,12 +83,16 @@ public class MainActivity extends AppCompatActivity {
         }else{
             //Perform Query to DB
             final UserDao userDao = db.userDao();
-            new Thread(new Runnable(){
+            Log.i("DEBUG","got the USER DAO");
+            Thread tr = new Thread(new Runnable(){
                 @Override
                 public void run(){
-
-                    userDao.register(new User(userEmail, passwordText, "m_Text", ""));
-
+                    Log.i("DEBUG", "run thread");
+                    //Register user to Data base
+                    User user = new User(userEmail, passwordText, "first Name", "fred");
+                    Log.i("DEBUG", "User Created, name: " + user.firstName);
+                    userDao.register(user);
+                    Log.i("DEBUG", "Registered User");
                     if(false){
                         runOnUiThread(new Runnable(){
                             @Override
@@ -102,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+            tr.start();
         }
     }
     public void onClick(View v){
