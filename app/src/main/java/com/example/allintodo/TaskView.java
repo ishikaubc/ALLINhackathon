@@ -2,17 +2,21 @@ package com.example.allintodo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,9 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskView extends AppCompatActivity {
-    AppDatabase db;
-    ArrayList<Task> tasks;
-    ListView taskView;
+    private AppDatabase db;
+    private ArrayList<Task> tasks;
+    private ListView taskView;
+    private Button addButton, saveButton, cancelButton;
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    //For popUp
+    private EditText enterTitle, enterName, enterDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,7 @@ public class TaskView extends AppCompatActivity {
 
         //Get Views
         taskView = (ListView) findViewById(R.id.taskView);
+        addButton = (Button) findViewById(R.id.addButton);
 
         //Pull info from intent
         Intent i = getIntent();
@@ -79,8 +89,43 @@ public class TaskView extends AppCompatActivity {
         }
         //Setup the list view with the custom task list adapter
         taskView.setAdapter(new TaskViewAdapter(this, tasks));
+
     }
 
+    /*
+        On click for the add button
+
+        Used to add a task to the db for the signed in user
+     */
+    public void onAdd(View v) throws InterruptedException {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View taskPopup = getLayoutInflater().inflate(R.layout.popup, null);
+        enterTitle = (EditText) taskPopup.findViewBy(R.id.enterTodo);
+        enterName = (EditText) taskPopup.findViewById(R.id.enterName);
+        enterDate = (EditText) taskPopup.findViewById(R.id.enterDate);
+        saveButton = (Button) taskPopup.findViewById(R.id.saveButton);
+        cancelButton = (Button) taskPopup.findViewById(R.id.cancelButton);
+
+        dialogBuilder.setView(taskPopup);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Define Save Button
+
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Define Cancel Button
+                dialog.dismiss();
+            }
+        });
+    }
 
     /*
     Array Adapter for the task view

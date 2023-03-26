@@ -34,4 +34,7 @@ public interface UserDao {
 
     @Delete
     void delete(User user);
+
+    @Insert
+    void insert(Task task);
 }
