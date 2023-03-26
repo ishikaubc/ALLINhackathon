@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TaskView extends AppCompatActivity {
@@ -31,6 +32,8 @@ public class TaskView extends AppCompatActivity {
     private Button addButton, saveButton, cancelButton;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    private TaskViewAdapter taskViewAdapt;
+    private String email;
     //For popUp
     private EditText enterTitle, enterName, enterDate;
 
@@ -38,15 +41,14 @@ public class TaskView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_view);
-
+        tasks = new ArrayList<>();
         //Get Views
         taskView = (ListView) findViewById(R.id.taskView);
         addButton = (Button) findViewById(R.id.addButton);
 
         //Pull info from intent
         Intent i = getIntent();
-        Bundle b = i.getExtras();
-        String email = b.getString("email");
+        email = i.getStringExtra("email");
 
         //Access DB and get dao
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
@@ -60,35 +62,22 @@ public class TaskView extends AppCompatActivity {
                 UserDao userDao = db.userDao();
                 //Query for the user
                 User user = userDao.getUser(email);
-                if( userDao.getUserTasks(email) != null){
-                    tasks = (ArrayList<Task>) userDao.getUserTasks(email).taskList;
-                }else{
-                    Log.i("DEBUG", "User has no tasks");
+
+
+                //Get all user tasks
+                if(userDao.getUserWithTask(email) != null){
+                    List<Task> tasksList = userDao.getUserWithTask(email).get(0).taskList;
+                    tasks = (ArrayList<Task>) tasksList;
+                    updateList();
                 }
+
             }
         });
         tr.start();
 
-
-
-        //DEBUG LIST
-        Task t1 = new Task("task1", email, "This is task 1", null);
-        //DEBUG LIST
-        Task t2 = new Task("task2", email, "This is task 2", null);
-        //DEBUG LIST
-        Task t3 = new Task("task3", email, "This is task 3", null);
-
-        tasks = new ArrayList<Task>();
-        tasks.add(t1);
-        tasks.add(t2);
-        tasks.add(t3);
-
-        //DEBUG !!!! Print out all of the tasks
-        for(Task t: tasks){
-            Log.i("DEBUG", t.toString());
-        }
         //Setup the list view with the custom task list adapter
-        taskView.setAdapter(new TaskViewAdapter(this, tasks));
+        taskViewAdapt = new TaskViewAdapter(this, tasks);
+        taskView.setAdapter(taskViewAdapt);
 
     }
 
@@ -100,7 +89,7 @@ public class TaskView extends AppCompatActivity {
     public void onAdd(View v) throws InterruptedException {
         dialogBuilder = new AlertDialog.Builder(this);
         final View taskPopup = getLayoutInflater().inflate(R.layout.popup, null);
-        enterTitle = (EditText) taskPopup.findViewBy(R.id.enterTodo);
+        enterTitle = (EditText) taskPopup.findViewById(R.id.enterTodo);
         enterName = (EditText) taskPopup.findViewById(R.id.enterName);
         enterDate = (EditText) taskPopup.findViewById(R.id.enterDate);
         saveButton = (Button) taskPopup.findViewById(R.id.saveButton);
@@ -114,7 +103,33 @@ public class TaskView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Define Save Button
+                //Go into thread for DB acess
 
+                Thread tr = new Thread(new Runnable(){
+                    @Override
+                    public void run(){
+                        UserDao userDao = db.userDao();
+
+                        //add task to db
+                        Date date = null;
+                        //Format input from pop up into task, and insert into DB
+                        userDao.insert(new Task(enterName.getText().toString(), email, enterTitle.getText().toString(), date));
+
+
+                        //Get all user tasks
+                        List<Task> tasksList = userDao.getUserWithTask(email).get(0).taskList;
+                        tasks = (ArrayList<Task>) tasksList;
+                        Log.i("DEBUG", "Email: " + email);
+                        for(Task t: tasksList){
+                            Log.i("DEBUG", "Task: " + t.name);
+                        }
+
+
+                    }
+                });
+                tr.start();
+                dialog.dismiss();
+                updateList();
             }
         });
 
@@ -127,6 +142,24 @@ public class TaskView extends AppCompatActivity {
         });
     }
 
+    /*
+        Update the List View
+     */
+    public void updateList(){
+        Log.i("DEBUG", "Updating List");
+
+        taskViewAdapt.clear();
+
+        if (tasks != null){
+            for (Task task : tasks) {
+
+                taskViewAdapt.insert(task, taskViewAdapt.getCount());
+            }
+        }
+
+        taskViewAdapt.notifyDataSetChanged();
+
+    }
     /*
     Array Adapter for the task view
      */

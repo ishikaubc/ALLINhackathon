@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class HomeScreen extends AppCompatActivity {
         //Just passing through
         Intent i = getIntent();
         String email = i.getStringExtra("email");
+        Log.i("DEBUG","EMAIL: " + email);
 
         Intent intent = new Intent(this, TaskView.class);
         intent.putExtra("email", email);

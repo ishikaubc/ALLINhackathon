@@ -24,4 +24,7 @@ public class Task {
         this.title = title;
         this.date = date;
     }
+    public String toString(){
+        return name;
+    }
 }

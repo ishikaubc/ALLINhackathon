@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         //Start up home screen
                         startActivity(new Intent(MainActivity.this, HomeScreen.class)
                                 //Pass over user email
-                                .putExtra("userEmail",userEmail));
+                                .putExtra("email",userEmail));
                     }
                 }
             });
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         //Start up home screen
                         startActivity(new Intent(MainActivity.this, HomeScreen.class)
                                 //Pass over user email
-                                .putExtra("userEmail",userEmail));
+                                .putExtra("email",userEmail));
                     }
                 }
             });
