@@ -1,6 +1,6 @@
 # WellDone
 
-WellDone is a mobile application built using Android Studio to help students plan their day, organize their to-do list into different categories. 
+WellDone is a mobile application built using Android Studio to help students plan their day. The application uses a local persistent Room database with login authentication so users can have their tasks secured.
 
 
 
