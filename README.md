@@ -55,7 +55,7 @@ https://developer.android.com/studio
 
 ## Screenshots
 
-![App Screenshot](https://www.figma.com/file/1euK1m7UWl6y3dfpKR6QGG/Untitled?node-id=0%3A1&t=xpdFGHasg0YukRgX-1)
+https://www.figma.com/file/1euK1m7UWl6y3dfpKR6QGG/Untitled?node-id=26%3A66&t=0YYMLMa0Vw9sryLg-1
 
 
 ## Contributing
