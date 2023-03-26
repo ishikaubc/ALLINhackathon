@@ -18,6 +18,9 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE email LIKE :email LIMIT 1")
     User login(String email);
 
+    @Query("SELECT * FROM user WHERE email LIKE :email LIMIT 1")
+    User getUser(String email);
+
     @Insert
     void register(User user);
 
