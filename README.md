@@ -14,6 +14,17 @@ Figma Link -  https://www.figma.com/file/1euK1m7UWl6y3dfpKR6QGG/Untitled?node-id
 
 Prorgramming Languages-
 
-android  figma  git  java  sqlite  wx_widgets
+Java, Android Studio, Figma, SQL Lite, Room(Database)
+
+What's next?
+
+Implement co:here, twilio API to notify users about their upcoming tasks, and send reminders to their preferred mode of contact.
+Publish the app for users to download and use. 
+
+
+
+
+
+
 
 
