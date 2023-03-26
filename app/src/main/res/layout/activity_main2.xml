@@ -1,9 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/Start"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#F9ECF3"
+      android:scrollbarThumbHorizontal="@color/material_dynamic_neutral0"
+      android:scrollbarThumbVertical="@color/material_dynamic_tertiary50"
+      android:scrollbarTrackHorizontal="@color/purple_200"
+      android:scrollbarTrackVertical="@color/purple_200"
+      tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/WELLDONE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:text="WELL"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/WELLDONE2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="DONE"
+        android:textColor="@color/teal_200"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/WELLDONE"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WELLDONE2"
+        app:srcCompat="@drawable/screenshot_2023_03_26_at_1_45_19_am" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="220dp"
+        android:background="@color/purple_200"
+        android:ems="10"
+        android:hint="ENTER YOUR EMAIL"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="120dp"
+        android:background="@color/purple_200"
+        android:ems="10"
+        android:hint="ENTER YOUR PASSWORD"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+    <Button
+        android:id="@+id/Signup"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:onClick="onSignUp"
+        android:text="SIGNUP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="150dp"
+        android:text="LOGIN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
