@@ -39,11 +39,15 @@ WellDone is a mobile application built using Android Studio to help students pla
 
 
 
-## Installation
+## Installation / Quick Setup 
 
-Install Android Studio, SDK 23, Gradle 7.2.2
+- Clone repo into latest Android Studio IDE
+- Go to File -> Project Structure -> Project
+- Set Android Gradle Plugin to 7.2.2
+- Set Gradle version to 7.3.3
+- Connect Physical device or run emulator
+- Run Application !!!
 
-https://developer.android.com/studio
 
     
 ## Tech Stack
