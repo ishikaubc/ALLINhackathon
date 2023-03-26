@@ -41,6 +41,8 @@ WellDone is a mobile application built using Android Studio to help students pla
 - Delete Tasks
 - View List
 
+![Untitled](https://user-images.githubusercontent.com/67449916/227787442-74a6f269-f320-434b-a22a-2f31d146fd6c.png)
+
 
 
 ## Installation / Quick Setup 
