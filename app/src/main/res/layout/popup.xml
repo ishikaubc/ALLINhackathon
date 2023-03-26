@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F8FDDD">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -18,9 +19,11 @@
 
     <EditText
         android:id="@+id/enterTodo"
-        android:layout_width="279dp"
-        android:layout_height="61dp"
+        android:gravity="center"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@color/purple_200"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Enter Todo"
@@ -31,9 +34,11 @@
         app:layout_constraintVertical_bias="0.064" />
 
     <EditText
+        android:gravity="center"
         android:id="@+id/enterName"
-        android:layout_width="279dp"
-        android:layout_height="61dp"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:background="@color/purple_200"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Enter Name"
@@ -44,9 +49,12 @@
         app:layout_constraintVertical_bias="0.179" />
 
     <EditText
+        android:text="Enter Date: MM/DD/YY"
+        android:gravity="center"
         android:id="@+id/enterDate"
-        android:layout_width="279dp"
-        android:layout_height="61dp"
+        android:background="@color/purple_200"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="date"
@@ -56,20 +64,20 @@
 
     <Button
         android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="54dp"
+        android:layout_width="117dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="68dp"
         android:text="Cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterDate" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="64dp"
+        android:layout_width="117dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="60dp"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterDate" />

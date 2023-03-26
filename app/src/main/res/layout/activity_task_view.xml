@@ -4,41 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9ECF3"
     tools:context=".TaskView">
+
+
+    <TextView
+        android:id="@+id/tasks"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:background="@color/teal_700"
+        android:gravity="center"
+        android:text="My Tasks"
+        android:textSize="24sp"
+        app:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/taskView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tasks" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200px"
         android:gravity="center"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
-        <TextView
-            android:id="@+id/tasks"
-            android:text="My Tasks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:onClick="onAdd"
+            android:text="Add" />
 
-        <ListView android:id="@+id/taskView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/addButton"
-                android:text="Add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onAdd"
-                />
-
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
