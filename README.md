@@ -1,5 +1,9 @@
 # WellDone
 
+<p align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/67449916/227784075-b2ea489e-eb89-450d-ac5d-a389749250c7.png">
+</p>
+
 WellDone is a mobile application built using Android Studio to help students plan their day. The application uses a local persistent Room database with login authentication so users can have their tasks secured.
 
 
