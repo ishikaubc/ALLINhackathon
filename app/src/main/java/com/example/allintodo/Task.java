@@ -3,6 +3,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
 
 import java.util.Date;
 
@@ -10,8 +11,17 @@ import java.util.Date;
 public class Task {
     @NonNull
     @PrimaryKey
-    int id;
+    public String name;
 
-    String name;
-    Date dueDate;
+    public String userCreatorId;
+
+    public String title;
+    public Date date;
+
+    public Task(String name, String userCreatorId, String title, Date date) {
+        this.name = name;
+        this.userCreatorId = userCreatorId;
+        this.title = title;
+        this.date = date;
+    }
 }

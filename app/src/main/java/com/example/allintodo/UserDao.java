@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import java.util.List;
 
@@ -20,6 +21,10 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE email LIKE :email LIMIT 1")
     User getUser(String email);
+
+    @Transaction
+    @Query("SELECT * FROM user WHERE email LIKE :email LIMIT 1")
+    public UserWithTask getUserTasks(String email);
 
     @Insert
     void register(User user);
