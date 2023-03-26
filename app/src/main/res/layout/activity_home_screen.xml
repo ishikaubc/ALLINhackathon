@@ -6,4 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9ECF3"
+        android:scrollbarThumbHorizontal="@color/material_dynamic_neutral0"
+        android:scrollbarThumbVertical="@color/material_dynamic_tertiary50"
+        android:scrollbarTrackHorizontal="@color/purple_200"
+        android:scrollbarTrackVertical="@color/purple_200"
+        tools:context=".MainActivity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-40dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="93dp"
+            android:layout_height="106dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_01_11_am" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_03_23_am" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="128dp"
+            android:layout_height="119dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_09_51_am" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Categories"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="117dp"
+            android:layout_height="106dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_24_19_am" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="123dp"
+            android:layout_height="105dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_24_44_am" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="115dp"
+            android:layout_height="106dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_25_27_am" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="330dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="145dp"
+            android:layout_height="131dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:srcCompat="@drawable/screenshot_2023_03_26_at_6_36_55_am" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

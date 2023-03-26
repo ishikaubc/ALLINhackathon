@@ -54,13 +54,13 @@
             app:srcCompat="@drawable/screenshot_2023_03_26_at_1_45_19_am" />
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/user"
             android:layout_width="320dp"
             android:layout_height="40dp"
             android:layout_marginBottom="220dp"
             android:background="@color/purple_200"
             android:ems="10"
-            android:hint="ENTER YOUR EMAIL"
+            android:hint="ENTER YOUR USERNAME"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textSize="22sp"
@@ -83,7 +83,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Email" />
+            app:layout_constraintTop_toBottomOf="@+id/user" />
 
         <Button
             android:id="@+id/Signup"

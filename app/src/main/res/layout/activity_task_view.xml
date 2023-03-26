@@ -11,8 +11,8 @@
     <TextView
         android:id="@+id/tasks"
         android:layout_width="fill_parent"
-        android:layout_height="120px"
-        android:background="@color/teal_700"
+        android:layout_height="125px"
+        android:background="#31D4B7"
         android:gravity="center"
         android:text="My Tasks"
         android:textSize="24sp"

@@ -53,4 +53,7 @@ public interface UserDao {
     @Query("SELECT * FROM task")
     List<Task> getAllTask();
 
+    @Delete
+    void delete(Task task);
+
 }

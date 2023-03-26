@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +35,7 @@ public class TaskView extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private TaskViewAdapter taskViewAdapt;
+    private TextView greet;
     private String email;
     //For popUp
     private EditText enterTitle, enterName, enterDate;
@@ -45,6 +48,7 @@ public class TaskView extends AppCompatActivity {
         //Get Views
         taskView = (ListView) findViewById(R.id.taskView);
         addButton = (Button) findViewById(R.id.addButton);
+        greet = (TextView) findViewById(R.id.tasks);
 
         //Pull info from intent
         Intent i = getIntent();
@@ -62,7 +66,7 @@ public class TaskView extends AppCompatActivity {
                 UserDao userDao = db.userDao();
                 //Query for the user
                 User user = userDao.getUser(email);
-
+                greet.setText("Hello " + user.firstName);
 
                 //Get all user tasks
                 if(userDao.getUserWithTask(email) != null){
@@ -78,6 +82,37 @@ public class TaskView extends AppCompatActivity {
         //Setup the list view with the custom task list adapter
         taskViewAdapt = new TaskViewAdapter(this, tasks);
         taskView.setAdapter(taskViewAdapt);
+        taskView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int listItem, long l) {
+                new AlertDialog.Builder(TaskView.this)
+                        .setTitle("Do you want to remove " + tasks.get(listItem) + " from lsit?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                               //remove from db
+                                Thread tr = new Thread(new Runnable(){
+                                    @Override
+                                    public void run(){
+
+                                        UserDao userDao = db.userDao();
+                                        userDao.delete(tasks.get(listItem));
+
+                                    }
+                                });
+                                tr.start();
+                                tasks.remove(listItem);
+                               updateList();
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        }).create().show();
+                return false;
+            }
+        });
 
     }
 

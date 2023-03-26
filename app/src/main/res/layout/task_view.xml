@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:layout_marginTop="15px"
             android:id="@+id/taskTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
