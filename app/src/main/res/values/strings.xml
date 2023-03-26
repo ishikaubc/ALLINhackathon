@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AllInToDo</string>
+    <string name="register">Register</string>
 </resources>
